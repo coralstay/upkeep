@@ -8,7 +8,9 @@ updated_date: '2026-11-05T20:03:00Z'
 labels:
   - archive
   - reinit
-dependencies: []
+dependencies:
+  - TASK-2
+  - TASK-3
 references:
   - source-header TASK-20(이관 원본)
 documentation:
