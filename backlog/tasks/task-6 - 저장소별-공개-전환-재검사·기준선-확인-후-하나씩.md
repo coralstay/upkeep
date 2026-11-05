@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-6
 title: '저장소별 공개 전환: 재검사·기준선 확인 후 하나씩'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:04:00Z'
 updated_date: '2026-11-05T20:04:00Z'
