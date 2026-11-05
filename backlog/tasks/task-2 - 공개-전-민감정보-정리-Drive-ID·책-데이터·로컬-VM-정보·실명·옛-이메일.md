@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-2
 title: '공개 전 민감정보 정리: Drive ID·책 데이터·로컬/VM 정보·실명·옛 이메일'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
 updated_date: '2026-11-05T20:01:00Z'
