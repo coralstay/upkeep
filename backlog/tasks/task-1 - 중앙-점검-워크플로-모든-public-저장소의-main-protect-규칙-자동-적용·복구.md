@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-1
 title: '중앙 점검 워크플로: 모든 public 저장소의 main-protect 규칙 자동 적용·복구'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
 updated_date: '2026-11-05T20:01:00Z'
