@@ -9,7 +9,8 @@ labels:
   - security
   - governance
   - ci
-dependencies: []
+dependencies:
+  - TASK-1
 references:
   - source-header TASK-21(이관 원본)
 documentation:
