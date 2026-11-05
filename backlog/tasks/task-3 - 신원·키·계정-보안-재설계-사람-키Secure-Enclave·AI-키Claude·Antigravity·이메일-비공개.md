@@ -4,7 +4,7 @@ title: '신원·키·계정 보안 재설계: 사람 키(Secure Enclave)·AI 키
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:02:00Z'
-updated_date: '2026-11-05T20:02:00Z'
+updated_date: '2026-11-05T22:05:00Z'
 labels:
   - identity
   - security
@@ -132,4 +132,6 @@ GitHub 웹 설정·Touch ID·settings.json 수정은 유저만 할 수 있으므
 - 발견: toy-project scripts/_vm.sh가 config.d/rocky-dev를 재생성하며 UseKeychain을 빼고, 새 VM 키를 암호 없이 만든다 → toy-project DRAFT-24로 남김
 
 증거: TASK-3#3 (GitHub) — 2026-11-06 재초기화한 17개 저장소의 사람 서명 첫 커밋이 GitHub에서 verified=true/valid(예: coralstay/freeride 01ed502). AC #4(AI 키의 GitHub Verified)는 Claude 커밋이 처음 push될 때 확인
+
+- 증거(부분): TASK-3#4 — Claude Code 키: claude-code-agile-hooks 7f939e2(서명 G/ai-claude-code)를 push한 뒤 `gh api repos/coralstay/claude-code-agile-hooks/commits/7f939e2` → verified=true, reason=valid(2026-11-06). Antigravity 키의 GitHub Verified는 실제 agy 실행 확인 때 남은 몫
 <!-- SECTION:NOTES:END -->
