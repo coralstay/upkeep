@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-5
 title: '보안 기준선 점검으로 확장: 비밀값 스캔·push 보호·Dependabot·Actions 권한·SECURITY.md'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:03:00Z'
 updated_date: '2026-11-05T20:03:00Z'
