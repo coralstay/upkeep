@@ -8,6 +8,10 @@ updated_date: '2026-11-05T20:04:00Z'
 labels:
   - public
 dependencies: []
+references:
+  - source-header TASK-22(이관 원본)
+documentation:
+  - ~/.claude/plans/giggly-kindling-snowglobe.md
 ---
 
 ## Description
@@ -47,3 +51,16 @@ dependencies: []
 2. 유저 공개
 3. 워크플로 수동 실행으로 규칙 적용 확인
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## 범위 추가 (2026-11-06, 유저 결정)
+보관본(coralstay-archive) 18곳도 공개한다. 선행 조건: doctree 보관본 공개 전 Drive 파일 234개의 링크 공유('anyone with link')가 0인지 확인하고, 켜진 파일은 '제한됨'으로 바꾼다. 앞으로 이 파일들의 링크 공유는 켜지 않는다.
+
+## 보관본 저작권 확인 (2026-11-06) — 유저 기준: 저작권 문제만 없으면 모두 공개
+- doctree: 실제 Drive file_id 234개 → 링크 공유가 켜진 파일이 있으면 책 PDF 배포가 됨. 공개 전 공유 전수 점검·해제 필수
+- claude-code-agile-hooks: session_logger 프롬프트 로깅이 라이선스 없는 disler/claude-code-hooks-mastery 참고 코드였음(3324074~6060d3a). TASK-52에서 자체 구현으로 재작성, HEAD에는 없음. 몇 줄짜리 기능 코드이고 이미 공개돼 있었음 → 공개 가능으로 판단
+- coding-agent-git-commit-tool: Pro Git(CC BY-NC-SA 3.0)·Google Shell Style Guide(CC BY 3.0) vendoring 이력(025eae4·d77c473 → 30d1056 제거). 출처 표시 조건으로 재배포 허용 → 공개 가능
+- handcrafted-cpp 등 5곳: 책 원문 이력은 TASK-16에서 GitHub에서 이미 제거(로컬 백업에만). devOps 책 PDF는 push된 적 없음. dev-toolchain CC BY 출처 표시 있음. ebpf 커널 코드 GPL-2.0 선언 → 문제 없음
+<!-- SECTION:NOTES:END -->
