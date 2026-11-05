@@ -1,0 +1,4 @@
+{
+  "testFirst": { "sourceGlobs": ["scripts/**"], "testGlobs": ["tests/test_*"] },
+  "humanSigners": ["human"]
+}

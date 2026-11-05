@@ -1,0 +1,13 @@
+# --- 새 출발 신원 (TASK-19) ---
+# Secretive(Secure Enclave) 에이전트: 사람 서명·인증은 Touch ID를 거친다
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+# Antigravity CLI는 자기 AI 서명 키로만 서명한다 (사람 키를 쓸 수 없음)
+# AI_AGENT: git-commit-tool이 AI 커밋을 알아보는 신호(Claude Code는 스스로 넣는다).
+# Antigravity는 넣지 않아 사람 커밋으로 오인되므로 여기서 넣고, 모델도 함께 알린다.
+agy() {
+  AI_AGENT="antigravity_agy" \
+  GIT_CONFIG_COUNT=2 \
+  GIT_CONFIG_KEY_0=user.signingkey GIT_CONFIG_VALUE_0="$HOME/.ssh/ai_antigravity_signing" \
+  GIT_CONFIG_KEY_1=gitformat.aiModel GIT_CONFIG_VALUE_1="claude-opus-5-5" \
+  command agy "$@"
+}

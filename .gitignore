@@ -1,0 +1,15 @@
+# 로컬 전용: 민감 패턴, 키 목록 등(커밋 금지)
+/local/
+
+# Python & Linter caches
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+
+# macOS
+.DS_Store
+._*
+
+# claude-code-agile-hooks 커버리지 게이트 로그(세션 ID 포함, 커밋 금지)
+/.claude-code-agile-hooks/
