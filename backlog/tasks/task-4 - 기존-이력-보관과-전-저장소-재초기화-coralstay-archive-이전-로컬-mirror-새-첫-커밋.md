@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-4
 title: '기존 이력 보관과 전 저장소 재초기화: coralstay-archive 이전 + 로컬 mirror + 새 첫 커밋'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:02:00Z'
 updated_date: '2026-11-05T20:03:00Z'
