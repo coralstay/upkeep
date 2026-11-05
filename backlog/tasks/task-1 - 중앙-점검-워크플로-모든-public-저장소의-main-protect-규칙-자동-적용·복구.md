@@ -10,6 +10,10 @@ labels:
   - github
   - ci
 dependencies: []
+references:
+  - source-header TASK-17(이관 원본)
+documentation:
+  - ~/.claude/plans/giggly-kindling-snowglobe.md
 ---
 
 ## Description
