@@ -4,11 +4,15 @@ title: '공개 전 민감정보 정리: Drive ID·책 데이터·로컬/VM 정�
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
-updated_date: '2026-11-05T20:01:00Z'
+updated_date: '2026-11-05T20:02:00Z'
 labels:
   - privacy
   - public
 dependencies: []
+references:
+  - source-header TASK-18(이관 원본)
+documentation:
+  - ~/.claude/plans/giggly-kindling-snowglobe.md
 ---
 
 ## Description
@@ -73,3 +77,9 @@ TASK-16과 같은 절차(백업 → HEAD 정리 → 추적 대상 미리보기 �
 4. 패턴 재검사(로컬 홈 경로, 옛 이메일, 실명, Drive ID 패턴, 192.168., VM UUID, brain ID)와 gitleaks → Notes
 5. GitHub 재생성·push·PR 스크립트를 유저가 실행
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+2026-11-01 범위 조정: 유저가 새 출발 계획(전 저장소 보관 후 재초기화, 계획 파일 참조)을 승인. 이 카드는 1단계(현재 파일 민감정보 정리, 옛 계정명·옛 이메일 파일 언급 포함)까지만 맡고, 재초기화·GitHub 재생성·public PR은 새 카드(DRAFT-2 보관·재초기화)로 넘긴다. public 저장소도 재초기화되므로 PR 없이 HEAD만 고친다. 진행: doctree 완료(282 passed), 나머지는 서브에이전트 진행 중.
+<!-- SECTION:NOTES:END -->
