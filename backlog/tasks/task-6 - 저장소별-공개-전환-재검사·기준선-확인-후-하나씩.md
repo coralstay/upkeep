@@ -7,7 +7,9 @@ created_date: '2026-11-05T20:04:00Z'
 updated_date: '2026-11-05T20:04:00Z'
 labels:
   - public
-dependencies: []
+dependencies:
+  - TASK-4
+  - TASK-5
 references:
   - source-header TASK-22(이관 원본)
 documentation:
