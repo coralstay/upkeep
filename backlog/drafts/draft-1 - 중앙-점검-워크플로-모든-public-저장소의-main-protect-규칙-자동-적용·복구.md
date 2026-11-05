@@ -4,6 +4,7 @@ title: '중앙 점검 워크플로: 모든 public 저장소의 main-protect 규�
 status: Draft
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
+updated_date: '2026-11-05T20:01:00Z'
 labels:
   - governance
   - github
@@ -40,3 +41,38 @@ GitHub 무료 요금제는 private 저장소에 규칙을 걸 수 없어(403) �
 - B5 (AC #2) main-protect 외의 다른 규칙(예: 옛 main-protection)은 건드리지 않고, 기준과 충돌하면 보고만 한다
 - B6 (AC #4) API 오류가 하나라도 있으면 워크플로는 실패(exit 1)한다 — 조용히 보호가 빠지는 일을 막는다
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 policy/main-protect.json이 현재 공개 저장소에 걸린 main-protect 정의(기본 브랜치, deletion·non_fast_forward·required_signatures·pull_request(merge, 승인 0), bypass 없음)와 같다
+- [ ] #2 판정 로직이 B1·B2·B3·B5에 따라 저장소마다 create·update·ok·private-skip·fork-skip·archived-skip 중 하나를 내고, 단위 테스트로 검증된다
+- [ ] #3 dry_run 입력이면 쓰기 API를 호출하지 않고(B4) 같은 판정 표를 출력한다
+- [ ] #4 워크플로가 schedule(매일)·workflow_dispatch로 돌고, 결과를 Step Summary 표로 남기며, API 오류가 있으면 실패한다(B6)
+- [ ] #5 README에 동작·PAT(GOVERNANCE_TOKEN) 만드는 법·수동 실행 방법을 적는다
+<!-- AC:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 단위 테스트 전체 통과(로그를 Implementation Notes에 첨부)
+- [ ] #2 유저가 GOVERNANCE_TOKEN을 등록한 뒤 dry_run 실행 결과와 실제 실행 결과(공개 저장소 6곳 ok)를 Implementation Notes에 첨부
+- [ ] #3 변경이 PR로 coralstay/coralstay main에 병합됨
+<!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Subjective
+유저가 모든 저장소의 main 직접 병합을 잠그라고 했고, 수동 스크립트 대신 CI로 거는 방법 중 A(중앙 점검 워크플로)를 골랐다(2026-11-01).
+
+### Objective
+coralstay 저장소 18개(포크·보관 0), public 6개는 main-protect 적용됨, private 12개는 무료 요금제라 규칙 API가 403. 기존 dev-toolchain에는 꺼지고 대상이 빈 main-protection 규칙이 있었다(이번에 main-protect로 교체). 프로필 저장소도 main-protect가 걸려 있어 변경은 PR로만 들어간다.
+
+### Assessment
+GitHub Actions의 schedule + workflow_dispatch로 조정(reconcile) 루프를 만든다. 판정 로직(기준과 실제 규칙 비교)은 순수 함수로 두고 단위 테스트한다. 쓰기는 gh api로만 한다. 공개 전환은 자동화하지 않는다. PAT는 유저가 만들어 비밀값으로 등록한다.
+
+### Plan
+1. 판정 로직 테스트 먼저(B1~B5) → scripts/enforce_main_protect.py
+2. workflow 파일(schedule·dispatch·dry_run·summary) + PR용 테스트 job
+3. README 절(동작, PAT 만드는 법, 수동 실행)
+4. PR로 coralstay/coralstay에 반영 → 유저가 GOVERNANCE_TOKEN 등록 → dry_run 수동 실행 → 실제 실행 실측
+<!-- SECTION:PLAN:END -->
