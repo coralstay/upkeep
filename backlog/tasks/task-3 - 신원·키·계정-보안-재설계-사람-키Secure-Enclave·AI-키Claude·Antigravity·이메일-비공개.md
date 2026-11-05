@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-3
 title: '신원·키·계정 보안 재설계: 사람 키(Secure Enclave)·AI 키(Claude·Antigravity)·이메일 비공개'
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-05T20:02:00Z'
 updated_date: '2026-11-05T20:02:00Z'
