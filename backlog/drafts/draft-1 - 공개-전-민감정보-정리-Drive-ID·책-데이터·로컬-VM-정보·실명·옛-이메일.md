@@ -4,6 +4,7 @@ title: '공개 전 민감정보 정리: Drive ID·책 데이터·로컬/VM 정�
 status: Draft
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
+updated_date: '2026-11-05T20:01:00Z'
 labels:
   - privacy
   - public
@@ -34,3 +35,41 @@ TASK-16(라이선스·저작권 정리)에 이어, 공개 전 노출 위험 감�
 | agent-orchestrator (public) | 테스트 픽스처 /Users 경로 5개, 실제 session_id | 가짜 값으로(PR), 테스트 통과 확인 |
 | coding-agent-git-commit-tool (public) | gf-93의 claude.ai 세션 URL | 삭제(PR) |
 <!-- SECTION:DESCRIPTION:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 [수동 검증] 대상 저장소 전체를 ~/githubs-backup/2026-11-01/에 git bundle로 백업하고 verify가 통과한다
+- [ ] #2 [수동 검증] doctree: 실제 Drive ID와 서재 목록이 HEAD·새 이력에 없고(map은 .gitignore + example 파일), 테스트가 통과하며, 재초기화·GitHub 재생성 스크립트가 준비된다
+- [ ] #3 [수동 검증] coding-style·handcrafted-cpp·databases: 책 목차·교안 데이터와 file:///Users 링크가 HEAD·새 이력에 없고 재초기화된다(로컬 생성용 데이터는 무시 파일로 남김)
+- [ ] #4 [수동 검증] ebpf: /Users 경로·VM UUID·IP·MAC·SSH 별칭·Antigravity 세션 ID가 HEAD·새 이력에 없고 검증 스위트가 통과하며 재초기화된다
+- [ ] #5 [수동 검증] source-header·central-docs-collector: 실명과 옛 이메일·계정 연결 문장이 HEAD·새 이력에 없고 테스트가 통과하며 재초기화된다
+- [ ] #6 [수동 검증] dev-toolchain·agent-orchestrator·coding-agent-git-commit-tool: 해당 HEAD 파일을 고치는 PR이 준비되고(테스트 통과) 병합된다
+- [ ] #7 [수동 검증] 18개 저장소 전체에 패턴 재검사와 gitleaks를 다시 돌려, 남은 것이 유지 허용 항목(세션 트레일러·.claude/plans·공개 연락처·dev-toolchain 커밋 메타데이터)뿐임을 Notes에 기록한다
+<!-- AC:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 [수동 검증] 백업 verify 로그와 재검사 결과를 Implementation Notes에 첨부
+- [ ] #2 [수동 검증] 재초기화 저장소마다 테스트·검증 스위트 통과
+- [ ] #3 [수동 검증] 로컬에서 뺀 원본 데이터가 지워지지 않고 남아 있음을 확인
+<!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Subjective
+유저가 공개 전 민감정보 점검을 요청했고(2026-11-01), 감사 결과에 대해 실명→coralstay, 옛 이메일 전부 삭제, doctree 재초기화, dev-toolchain 커밋 메타데이터는 유지로 정했다.
+
+### Objective
+감사 결과는 Description 표. 대상 private 저장소는 모두 PR·이슈가 0이거나(재초기화 4곳과 같은 조건) 재초기화를 유저가 승인했다(doctree, PR 7). public 저장소는 main-protect 때문에 PR로만 반영된다. 훅이 gh repo delete와 main push를 막으므로 GitHub 삭제·재생성·push는 유저가 스크립트로 실행한다.
+
+### Assessment
+TASK-16과 같은 절차(백업 → HEAD 정리 → 추적 대상 미리보기 → 재초기화 → gitleaks·패턴 재검사 → 유저 스크립트)를 쓴다. 지운 값은 로컬에 남긴다(.gitignore). public 저장소는 HEAD만 고친다. 생성기에서 뺀 데이터는 별도 무시 파일로 옮겨 로컬 생성은 계속 되게 한다.
+
+### Plan
+1. 대상 전체 bundle 백업(~/githubs-backup/2026-11-01/) + verify
+2. private 7곳 HEAD 정리 → 재초기화
+3. public 3곳 HEAD 정리 → PR
+4. 패턴 재검사(로컬 홈 경로, 옛 이메일, 실명, Drive ID 패턴, 192.168., VM UUID, brain ID)와 gitleaks → Notes
+5. GitHub 재생성·push·PR 스크립트를 유저가 실행
+<!-- SECTION:PLAN:END -->
