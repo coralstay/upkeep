@@ -10,6 +10,10 @@ labels:
   - governance
   - ci
 dependencies: []
+references:
+  - source-header TASK-21(이관 원본)
+documentation:
+  - ~/.claude/plans/giggly-kindling-snowglobe.md
 ---
 
 ## Description
@@ -55,3 +59,9 @@ TASK-17의 조정 루프에 기준선 항목을 플러그인처럼 더한다. �
 3. GF 쪽 .githooks gitleaks 플러그인(별도 카드 연계)
 4. dry-run → 실제 실행
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+계획 4절(2026-11-06): 이 카드에서 CI 최종 방어선을 함께 만든다 — PR에서 Done으로 바뀐 카드마다 Plan-Approved · Manual-Verified 커밋이 GitHub Verified이고 사람 키 지문과 맞는지 확인하는 필수 검사(판정은 agile-hooks scripts/card_gate.py). 무료 요금제에서 필수 검사는 public 저장소만 강제되므로 private 저장소는 로컬 방어(agile-hooks 훅 · commit-tool pre-push)에 의존한다는 점을 runbook에 적는다. AC로 넣는 것은 승인 전 계획 리뷰 때 정한다.
+<!-- SECTION:NOTES:END -->
