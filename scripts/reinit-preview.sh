@@ -17,9 +17,7 @@ G="$HOME/githubs"
 OUT="${1:-$HOME/githubs-backup/2026-11-01/reinit-preview}"
 mkdir -p "$OUT"
 GITLEAKS="$G/bin/gitleaks"
-# 민감 패턴(대소문자 무시). Drive ID는 doctree의 실제 map ID와 대조한다(아래).
-# 민감 패턴은 저장소에 두지 않는다: local/patterns.sh(로컬 전용, .gitignore)에서 읽는다
-P="$(cd "$(dirname "$0")/.." && pwd)/local/patterns.sh"
+P="$(cd "$(dirname "$0")/.." && pwd)/local/patterns.sh"  # ---- 1
 [ -f "$P" ] || { echo "민감 패턴 파일이 없습니다: $P"; exit 1; }
 . "$P"
 PAT="$PAT_PREVIEW"
@@ -30,8 +28,7 @@ cd "$G" || exit 1
 for g in $(find . -path ./opensource -prune -o -path '*/references' -prune -o -name .git -maxdepth 5 -print | sort); do
   r=${g%/.git}; r=${r#./}; n=$(echo "$r" | tr / _)
   f="$OUT/$n.files"; : > "$OUT/$n.findings"
-  # 첫 커밋 대상 목록(추적 중이지만 .gitignore에 걸린 파일은 뺀다)
-  git -C "$r" ls-files -co --exclude-standard -z | tr '\0' '\n' | while IFS= read -r p; do
+  git -C "$r" ls-files -co --exclude-standard -z | tr '\0' '\n' | while IFS= read -r p; do  # ---- 2
     [ -e "$r/$p" ] || [ -L "$r/$p" ] || continue
     git -C "$r" check-ignore -q --no-index -- "$p" 2>/dev/null && continue
     printf '%s\n' "$p"
@@ -45,13 +42,11 @@ for g in $(find . -path ./opensource -prune -o -path '*/references' -prune -o -n
   third=$(grep -cE "$THIRD" "$f"); grep -E "$THIRD" "$f" | sed 's/^/THIRD /' >> "$OUT/$n.findings"
   # 1MB 초과
   big=0; while IFS= read -r p; do [ -f "$r/$p" ] || continue; s=$(stat -f %z "$r/$p"); [ "$s" -gt 1048576 ] && { echo "BIG $p $s" >> "$OUT/$n.findings"; big=$((big+1)); }; done < "$f"
-  # gitleaks: 대상 파일만 복사해 스캔
-  tmp=$(mktemp -d); rsync -a --files-from="$f" "$r/" "$tmp/" 2>/dev/null
+  tmp=$(mktemp -d); rsync -a --files-from="$f" "$r/" "$tmp/" 2>/dev/null  # ---- 3
   leaks=$("$GITLEAKS" dir --no-banner --redact --report-format json --report-path "$tmp.json" "$tmp" >/dev/null 2>&1; python3 -c "import json,sys;print(len(json.load(open(sys.argv[1]))))" "$tmp.json" 2>/dev/null || echo "?")
   [ "$leaks" != 0 ] && python3 -c "import json,sys;[print('LEAK',x['File'].replace(sys.argv[2]+'/',''),x['StartLine'],x['RuleID']) for x in json.load(open(sys.argv[1]))]" "$tmp.json" "$tmp" >> "$OUT/$n.findings" 2>/dev/null
   rm -rf "$tmp" "$tmp.json"
   note=""
-  # doctree: 실제 Drive ID가 대상 파일에 들어갔는지
   if [ "$n" = freeride_doctree ] && [ -f "$r/config/content_category_map.yaml" ]; then
     ids=$(python3 - "$r" "$f" <<'PY'
 import sys,re,pathlib
@@ -67,8 +62,20 @@ for p in open(f).read().split("\n"):
 print(hit)
 PY
 )
-    note="DriveID=$ids"
+    note="DriveID=$ids"  # ---- 4
   fi
   printf "%-58s %6s %6s %6s %6s %6s %s\n" "$r" "$cnt" "$pat" "$leaks" "$big" "$third" "$note"
 done
 echo "자세한 내용: $OUT/<이름>.findings"
+
+# ======== 노트 ========
+# 1 민감 패턴은 저장소 밖에서 읽는다
+#   설명: 민감 패턴(대소문자 무시 grep 식)은 저장소에 두지 않고 local/patterns.sh(로컬 전용, .gitignore)에서 읽는다. 파일이 없으면 멈춘다. Drive ID는 doctree의 실제 map ID와 대조한다.
+#   관련: README.md
+# 2 첫 커밋 대상 목록
+#   설명: git init 뒤 git add -A와 같은 파일 집합이다: 추적 중 + 추적 안 된 파일에서 .gitignore에 걸리는 것(추적 중이어도)을 뺀다. reinit.sh가 이 목록의 개수와 비교한다.
+#   관련: scripts/reinit.sh
+# 3 gitleaks는 대상 파일만 스캔
+#   설명: 저장소 전체가 아니라 첫 커밋에 들어갈 파일만 임시 폴더에 복사해 dir 스캔한다. 새 이력에 들어갈 파일만 검사하려는 것이다.
+# 4 doctree의 Drive ID 유출 확인
+#   설명: doctree 저장소만, map 파일의 file_id가 대상 파일에 몇 번 들어갔는지 센다. note 칸에는 그 개수(DriveID=개수)만 나온다.
