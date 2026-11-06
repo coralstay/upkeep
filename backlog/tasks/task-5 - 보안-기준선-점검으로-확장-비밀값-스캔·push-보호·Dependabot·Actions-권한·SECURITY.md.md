@@ -4,7 +4,7 @@ title: '보안 기준선 점검으로 확장: 비밀값 스캔·push 보호·Dep
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:03:00Z'
-updated_date: '2026-11-05T22:12:00Z'
+updated_date: '2026-11-06T04:31:00Z'
 labels:
   - security
   - governance
@@ -67,4 +67,6 @@ TASK-17의 조정 루프에 기준선 항목을 플러그인처럼 더한다. �
 계획 4절(2026-11-06): 이 카드에서 CI 최종 방어선을 함께 만든다 — PR에서 Done으로 바뀐 카드마다 Plan-Approved · Manual-Verified 커밋이 GitHub Verified이고 사람 키 지문과 맞는지 확인하는 필수 검사(판정은 agile-hooks scripts/card_gate.py). 무료 요금제에서 필수 검사는 public 저장소만 강제되므로 private 저장소는 로컬 방어(agile-hooks 훅 · commit-tool pre-push)에 의존한다는 점을 runbook에 적는다. AC로 넣는 것은 승인 전 계획 리뷰 때 정한다.
 
 결정 필요(2026-11-06): private 저장소의 main 보호. GitHub Free는 ruleset을 public에만 적용하므로 지금 새 저장소 17개 + upkeep은 main 보호가 없다. 훅(pre_git_safety_check)은 문자열 판정이라 gh api 다른 경로 · curl · 스크립트 · SSH push 변형을 다 막지 못한다(friction draft 'private 저장소에 main 보호가 없고…'). 선택지: (a) 공개 시점 앞당기기(TASK-6) (b) GitHub Pro로 private ruleset (c) 에이전트 전용 fine-grained PAT(contents 읽기 + PR 생성) + 에이전트 전용 SSH 인증 경로. 에이전트 PR 병합 허용 조건(CI 통과 + 사람 승인)도 함께 정한다. 계획 리뷰 때 AC로 반영.
+
+적용(2026-11-06, 유저 지시): coralstay 저장소 19개 전부 병합 방식을 merge commit만 허용으로 바꿨다(`gh api -X PATCH repos/coralstay/<n> -F allow_squash_merge=false -F allow_rebase_merge=false`, 다시 조회해 19/19 merge=true squash=false rebase=false 확인). 이유: squash · rebase 병합은 사람 서명 Plan-Approved 커밋을 다른 커밋으로 바꿔 훅의 승인 판정 근거가 사라진다. 훅은 사람이 하는 병합을 볼 수 없어 GitHub 설정으로 강제한다(무료 private에서도 됨). 기준선 항목으로 넣을 것: 새 저장소 생성 시 같은 설정, 'Require linear history'는 켜지 않음(merge commit과 충돌), 중앙 점검 워크플로(TASK-1)가 점검 · 복구.
 <!-- SECTION:NOTES:END -->
