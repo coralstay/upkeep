@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: protect-vm-key
+# description: VM 접속 키에 암호를 걸고 macOS 키체인으로 열리게 설정하는 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-19 AC #10: VM 접속 키(rocky-dev)에 암호를 걸고 macOS 키체인으로 열리게 한다. 여러 번 실행해도 안전하다.
 set -eu
 K="$HOME/.ssh/rocky-dev_ed25519"

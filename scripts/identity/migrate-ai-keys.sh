@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: migrate-ai-keys
+# description: AI 서명 키를 Secretive로 옮기고 allowed_signers에 유효기간을 넣는 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-19 AC #7·#8: AI 서명 키를 파일에서 Secretive(Secure Enclave)로 옮기고, allowed_signers에 유효기간을 넣는다.
 # 전제: Secretive에 Touch ID 없이(Require Authentication 끔) 키 두 개를 만들어 두었다 — 이름 ai-claude-code, ai-antigravity
 # 여러 번 실행해도 안전하다. 바꾸는 파일은 처음 한 번만 .bak-ai-2026-11 로 백업한다.

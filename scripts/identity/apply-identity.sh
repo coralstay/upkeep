@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: apply-identity
+# description: GitHub 키 등록, allowed_signers, ssh 설정, git 전역 서명 설정으로 새 신원을 적용하는 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-19: 새 신원 적용. 여러 번 실행해도 안전하다(있는 키는 건너뛰고, 바꾸는 파일은 처음 한 번만 .bak-2026-11 으로 백업).
 # 하는 일
 #   1) GitHub에 키 4개 등록: 사람 접속(Secure Enclave), 사람 서명(Secure Enclave), AI 서명 Claude·Antigravity

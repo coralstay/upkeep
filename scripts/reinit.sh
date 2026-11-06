@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: reinit
+# description: 저장소의 .git을 지우고 사람 서명 첫 커밋으로 다시 시작해 Private 저장소로 push하는 재초기화 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-20 4단계: 저장소의 .git을 지우고 새 첫 커밋(사람 서명, Touch ID) 하나로 다시 시작한 뒤,
 # coralstay 계정에 같은 이름의 Private 저장소를 만들어 push한다. 설명·토픽·홈페이지는 보관본에서 복원한다.
 # 사용법: sh reinit.sh            (아래 순서대로 전부)

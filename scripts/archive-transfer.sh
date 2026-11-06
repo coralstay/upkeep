@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: archive-transfer
+# description: coralstay 계정 저장소를 보관 조직으로 이전하고 Archived로 바꾼 뒤 이전 전후 수치를 비교하는 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-20 2단계: coralstay 계정의 저장소 18개를 coralstay-archive 조직으로 옮기고(transfer) Archived(읽기 전용)로 바꾼다.
 # - 공개 여부는 바꾸지 않는다(Public은 Public, Private은 Private). 보관본 공개는 TASK-22에서.
 # - 여러 번 실행해도 안전하다: 이미 옮겼거나 Archived면 건너뛴다.

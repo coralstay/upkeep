@@ -1,4 +1,13 @@
 #!/bin/sh
+# ---
+# title: reinit-preview
+# description: 저장소 재초기화 시 첫 커밋 대상 파일을 읽기 전용으로 뽑아 민감 패턴·대용량·제3자 흔적을 검사하는 스크립트
+# authors: [coralstay]
+# license: AGPL-3.0-only
+# status: draft
+# created_date: '2026-11-06'
+# updated_date: '2026-11-06'
+# ---
 # TASK-20 3단계: 재초기화하면 첫 커밋에 들어갈 파일을 미리 뽑아 검사한다. 저장소는 아무것도 바꾸지 않는다(읽기 전용).
 # 첫 커밋 대상 = (추적 중 + 추적 안 된 파일) 중 .gitignore에 걸리지 않는 것 — git init 뒤 `git add -A`와 같다.
 # 검사: 민감 패턴 grep, gitleaks(대상 파일만 임시 폴더에 복사해 dir 스캔), 1MB 넘는 파일, 제3자 흔적 경로.
