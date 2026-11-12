@@ -1,0 +1,1 @@
+{"include": ["scripts/**", "runbooks/**"], "exclude": ["**/README.md", "**/NOTES.md", "**/issue-577-comment.md", "backlog/**", "scripts/identity/zshrc.snippet"]}
