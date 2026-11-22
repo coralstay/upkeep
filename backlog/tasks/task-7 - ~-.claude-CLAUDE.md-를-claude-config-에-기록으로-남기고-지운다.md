@@ -1,7 +1,7 @@
 ---
-id: DRAFT-1
+id: TASK-7
 title: ~/.claude/CLAUDE.md 를 claude-config/ 에 기록으로 남기고 지운다
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-11-22T10:27:00Z'
 updated_date: '2026-11-22T10:27:00Z'
