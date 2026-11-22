@@ -4,7 +4,7 @@ title: 미병합 브랜치 task/TASK-1(운영 카드 TASK-1~6·runbooks·draft 1
 status: In Progress
 assignee: []
 created_date: '2026-11-22T11:29:00Z'
-updated_date: '2026-11-22T12:02:00Z'
+updated_date: '2026-11-22T12:04:00Z'
 labels:
   - cleanup
   - backlog
@@ -64,3 +64,29 @@ main 에서 정리 브랜치를 파고 task/TASK-1 을 merge 해 이력을 보�
 2. 카드·draft 분류표, 증거 있는 것만 처리.
 3. pytest·list 확인 → 브랜치 삭제 → Done → PR.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## 2026-11-22 작업 기록
+### 병합 (AC #1)
+- task/TASK-8 을 task/TASK-1 끝(6f535a7, 이 카드·서명·In Progress 포함)에서 파고 origin/main(e4fb728: TASK-7·claude-config/·tests)을 merge(477c09e). backlog/work-order.md add/add 충돌은 work-order 재생성으로 풀었고, 병합 마무리 커밋은 agile-hooks TASK-77(MERGE_HEAD 예외) 덕분에 통과
+- 이 카드의 draft 는 번호 충돌을 피하려고 task/TASK-1 위에서 만들었다(main 에서 만들면 DRAFT-1 이 겹침)
+
+### 분류표 (AC #2)
+| 카드 | 분류 | 처리 |
+|---|---|---|
+| TASK-1·5 | 보류 | 유저가 11-12 공개 때 보안 설정을 일부러 켜지 않음 — 유저 요청 시 진행. 노트 |
+| TASK-2 | 남은 일 | 0/7, 6번 공개 작업 때 범위 재판단. 노트 |
+| TASK-3 | 수동 검증 대기 | AC #4 증거 추가(Claude·Antigravity 서명 모두 GitHub Verified, principal 구별) → AC 10/10. Manual-Verified(agile-hooks TASK-73) 대기로 상태 유지 |
+| TASK-4 | 수동 검증 대기 | AC 5/5, DoD 수동 검증 대기로 상태 유지. 노트 |
+| TASK-6 | 계획 6번으로 | 노트 |
+| TASK-7 | Done | main 에서 들어옴 |
+| DRAFT-7 | 해결됨 | agile-hooks TASK-75(PR #4)로 해결 → archive |
+| DRAFT-1~6·8~18 | friction 기록 | 그대로(DRAFT-9 'Done 게이트가 브랜치 카드만 본다'는 2026-11-22 source-header 정리에서도 재확인) |
+
+### 검증 (AC #3, DoD #2)
+- pytest tests: 17 passed + 이 노트 검사 1개(노트를 쓴 뒤 통과), 카드·draft id 중복 없음
+- 기존 브랜치: 커밋 뒤 로컬 task/TASK-1 삭제(원격에는 없었음)
+- PR: 소스 브랜치 task/TASK-8(번호는 생성 뒤 추가)
+<!-- SECTION:NOTES:END -->
