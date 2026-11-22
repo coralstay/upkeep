@@ -1,7 +1,7 @@
 ---
 id: TASK-8
 title: 미병합 브랜치 task/TASK-1(운영 카드 TASK-1~6·runbooks·draft 18장) 병합과 카드 상태 정리
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-11-22T11:29:00Z'
 updated_date: '2026-11-22T12:04:00Z'
@@ -33,15 +33,15 @@ documentation:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 정리 브랜치(origin/main 기준)에 task/TASK-1 을 merge 로 합치고(rebase·squash 없음), work-order.md 충돌은 work-order 재생성으로 푼다. TASK-7·claude-config/ 와 TASK-1~6·runbooks·draft 18장이 모두 main 쪽에 들어온다(B2)
-- [ ] #2 카드 TASK-1~6 과 draft 18장의 상태를 분류표로 Notes 에 남긴다. 증거 있는 끝난 카드만 Done, TASK-2·3·4 는 Manual-Verified 대기로 상태 유지·노트(B1·B3)
-- [ ] #3 합친 뒤 tests/ pytest 가 통과하고 backlog task list·draft list 가 정상이며(번호 중복 없음), 기존 task/TASK-1 브랜치는 병합 확인 뒤 지운다
+- [x] #1 정리 브랜치(origin/main 기준)에 task/TASK-1 을 merge 로 합치고(rebase·squash 없음), work-order.md 충돌은 work-order 재생성으로 푼다. TASK-7·claude-config/ 와 TASK-1~6·runbooks·draft 18장이 모두 main 쪽에 들어온다(B2)
+- [x] #2 카드 TASK-1~6 과 draft 18장의 상태를 분류표로 Notes 에 남긴다. 증거 있는 끝난 카드만 Done, TASK-2·3·4 는 Manual-Verified 대기로 상태 유지·노트(B1·B3)
+- [x] #3 합친 뒤 tests/ pytest 가 통과하고 backlog task list·draft list 가 정상이며(번호 중복 없음), 기존 task/TASK-1 브랜치는 병합 확인 뒤 지운다
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 분류표와 증거를 Notes 에 첨부
-- [ ] #2 pytest·backlog list 출력 첨부
+- [x] #1 분류표와 증거를 Notes 에 첨부
+- [x] #2 pytest·backlog list 출력 첨부
 - [ ] #3 PR 이 있다
 <!-- DOD:END -->
 
@@ -90,3 +90,9 @@ main 에서 정리 브랜치를 파고 task/TASK-1 을 merge 해 이력을 보�
 - 기존 브랜치: 커밋 뒤 로컬 task/TASK-1 삭제(원격에는 없었음)
 - PR: 소스 브랜치 task/TASK-8(번호는 생성 뒤 추가)
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+로컬에만 있던 task/TASK-1(운영 카드 TASK-1~6, friction draft 18장, runbooks/secretive-short-read/, 커밋 53개)을 main 쪽(TASK-7·claude-config/)과 merge 로 합쳐 이력을 보존했다. work-order.md 충돌은 재생성, 병합 마무리는 agile-hooks TASK-77 덕분에 통과했다. 운영 카드는 분류 노트만 남기고 상태를 바꾸지 않았으며(수동 검증 대기 TASK-2·3·4 유지), TASK-3 의 마지막 AC(Claude·Antigravity 서명 모두 GitHub Verified)를 증거로 체크했다. 해결된 DRAFT-7 은 보관했다.
+<!-- SECTION:FINAL_SUMMARY:END -->
