@@ -4,7 +4,7 @@ title: ~/.claude/CLAUDE.md 를 claude-config/ 에 기록으로 남기고 지운�
 status: In Progress
 assignee: []
 created_date: '2026-11-22T10:27:00Z'
-updated_date: '2026-11-22T11:06:00Z'
+updated_date: '2026-11-22T11:07:00Z'
 labels:
   - claude-config
   - record
@@ -42,15 +42,15 @@ documentation:
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 claude-config/README.md 와 claude-config/CLAUDE.md-2026-11-21.md 가 있고, 기록 본문이 백업 원본(~/githubs-backup/2026-11-21-CLAUDE.md.bak)과 같다(diff 로 증명, 헤더 주석·경로 치환 예외는 README 에 명시). README 에 '지금은 적용되지 않음'과 다시 적용하는 법이 있다(B1·B3)
-- [ ] #2 [수동 검증] 기록 커밋 뒤 ~/.claude/CLAUDE.md 를 지웠고, 지우기 직전 내용과 기록의 원칙 부분이 같음을 대조했다(B2)
-- [ ] #3 upkeep README 구성 목록에 claude-config/ 가 있고 source-header lint --strict 0, gitleaks 0 이다
+- [x] #1 claude-config/README.md 와 claude-config/CLAUDE.md-2026-11-21.md 가 있고, 기록 본문이 백업 원본(~/githubs-backup/2026-11-21-CLAUDE.md.bak)과 같다(diff 로 증명, 헤더 주석·경로 치환 예외는 README 에 명시). README 에 '지금은 적용되지 않음'과 다시 적용하는 법이 있다(B1·B3)
+- [x] #2 [수동 검증] 기록 커밋 뒤 ~/.claude/CLAUDE.md 를 지웠고, 지우기 직전 내용과 기록의 원칙 부분이 같음을 대조했다(B2)
+- [x] #3 upkeep README 구성 목록에 claude-config/ 가 있고 source-header lint --strict 0, gitleaks 0 이다
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 기록과 백업 원본의 diff 출력을 Notes 에 첨부
-- [ ] #2 삭제 직전 대조와 삭제 확인(ls) 출력을 Notes 에 첨부
+- [x] #1 기록과 백업 원본의 diff 출력을 Notes 에 첨부
+- [x] #2 삭제 직전 대조와 삭제 확인(ls) 출력을 Notes 에 첨부
 - [ ] #3 PR 이 있다
 <!-- DOD:END -->
 
@@ -74,3 +74,18 @@ upkeep 에 claude-config/ 를 만들어 원본 전문을 바이트 그대로(헤
 3. diff 로 원문 동일 확인, lint·gitleaks, 커밋.
 4. ~/.claude/CLAUDE.md 직전 대조 → 삭제 → 확인, Notes, Done, PR.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## 2026-11-22 작업·검증
+- 증거: TASK-7#1 — claude-config/CLAUDE.md-2026-11-21.md 는 ~/githubs-backup/2026-11-21-CLAUDE.md.bak 과 cmp 바이트 동일(73줄, 헤더 주석도 넣지 않음 — 계획보다 엄격하게, 출처는 README 에). claude-config/README.md 에 절별 상태(워크플로 블록 1~39 = agile-hooks TASK-76 으로 대체, 서브에이전트 41~52·다이어그램 54~73 = 기록만)와 다시 적용하는 법(sed -n '41,73p' …)
+- 증거: TASK-7#2 — 기록이 f64d4ae 로 커밋된 것을 git cat-file -e HEAD:… 로 확인한 뒤, git show HEAD:… 의 41~73행과 ~/.claude/CLAUDE.md(2390바이트)를 diff -q 로 대조해 동일 확인 → rm ~/.claude/CLAUDE.md → ls 'No such file or directory'
+- 증거: TASK-7#3 — README 구성 목록에 claude-config/ 한 줄(f64d4ae 에 함께 들어감: auto_stage 훅이 먼저 스테이징). source-header lint --strict rc=0, gitleaks(claude-config, 백업) no leaks, /Users/ 경로 0건
+<!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+~/.claude/CLAUDE.md 를 upkeep/claude-config/ 에 원본과 바이트까지 같게 기록하고, 절별 상태와 다시 적용하는 법을 README 에 적은 뒤, 기록 커밋을 확인하고 원본을 지웠다. 워크플로 블록은 agile-hooks TASK-76 안내문이 대신하고, 서브에이전트·다이어그램 원칙은 유저 결정대로 기록만 하며 더는 Claude 에게 읽히지 않는다.
+<!-- SECTION:FINAL_SUMMARY:END -->
