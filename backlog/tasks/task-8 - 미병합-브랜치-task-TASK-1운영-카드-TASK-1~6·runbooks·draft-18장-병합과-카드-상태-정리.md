@@ -42,7 +42,7 @@ documentation:
 <!-- DOD:BEGIN -->
 - [x] #1 분류표와 증거를 Notes 에 첨부
 - [x] #2 pytest·backlog list 출력 첨부
-- [ ] #3 PR 이 있다
+- [x] #3 PR 이 있다
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -89,6 +89,8 @@ main 에서 정리 브랜치를 파고 task/TASK-1 을 merge 해 이력을 보�
 - pytest tests: 17 passed + 이 노트 검사 1개(노트를 쓴 뒤 통과), 카드·draft id 중복 없음
 - 기존 브랜치: 커밋 뒤 로컬 task/TASK-1 삭제(원격에는 없었음)
 - PR: 소스 브랜치 task/TASK-8(번호는 생성 뒤 추가)
+
+- PR #3 https://github.com/coralstay/upkeep/pull/3 (소스 브랜치 task/TASK-8)
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
