@@ -4,11 +4,14 @@ title: ~/.claude/CLAUDE.md 를 claude-config/ 에 기록으로 남기고 지운�
 status: To Do
 assignee: []
 created_date: '2026-11-22T10:27:00Z'
-updated_date: '2026-11-22T10:27:00Z'
+updated_date: '2026-11-22T11:02:00Z'
 labels:
   - claude-config
   - record
 dependencies: []
+documentation:
+  - /Users/flynn_macpro/.claude/plans/upkeep-claude-config-record.md
+  - /Users/flynn_macpro/githubs-backup/2026-11-21-CLAUDE.md.bak
 ---
 
 ## Description
