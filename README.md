@@ -11,6 +11,7 @@
   - `archive-transfer.sh`: 보관 조직(coralstay-archive)으로 이전 + Archived
   - `identity/`: 신원·키 적용 스크립트와 셸 설정 조각
 - `runbooks/`: 반복되는 운영 절차
+- `claude-config/`: Claude Code 사용자 설정(`~/.claude/CLAUDE.md` 등)에 있던 지시문의 기록. 지금은 적용되지 않는다
 - `local/`: 로컬 전용(커밋 안 함). `patterns.sh`(민감 패턴) 등
 
 ## 운영 카드 규칙
@@ -22,3 +23,6 @@
 CLI로 일하다 흐름이 막히거나, 도구가 예상과 다르게 동작하거나, 규칙이 새는 곳을 발견하면 그 자리에서 draft 1장을 만든다.
 - 라벨: `friction` + 원인 도구 `tool:<이름>`(예: `tool:agile-hooks`, `tool:gh`, `tool:bash`)
 - 내용: 증상, 재현, 원인 추정. 고치는 작업은 해당 도구 저장소의 카드로 만들고 여기서 연결한다
+
+## 라이선스
+AGPL-3.0-only. 전문은 `LICENSE`, 소스 파일 헤더의 `license` 필드도 같다.
