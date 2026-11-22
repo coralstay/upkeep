@@ -51,7 +51,7 @@ documentation:
 <!-- DOD:BEGIN -->
 - [x] #1 기록과 백업 원본의 diff 출력을 Notes 에 첨부
 - [x] #2 삭제 직전 대조와 삭제 확인(ls) 출력을 Notes 에 첨부
-- [ ] #3 PR 이 있다
+- [x] #3 PR 이 있다
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -84,6 +84,8 @@ upkeep 에 claude-config/ 를 만들어 원본 전문을 바이트 그대로(헤
 - 증거: TASK-7#3 — README 구성 목록에 claude-config/ 한 줄(f64d4ae 에 함께 들어감: auto_stage 훅이 먼저 스테이징). source-header lint --strict rc=0, gitleaks(claude-config, 백업) no leaks, /Users/ 경로 0건
 
 - 테스트: tests/test_claude_config.py(11개). 순서 위반 기록 — 작업 뒤에 썼다. upkeep testFirst 가 Done 전에 표식을 요구해 알게 됐다(scripts/** 가 아닌 문서 작업이라 편집 게이트는 걸리지 않았다). 10 passed, PR 기록 테스트만 PR 생성 전이라 실패 → PR 번호 기록 후 통과 예정
+
+- 증거: TASK-7#D3 — PR #2 https://github.com/coralstay/upkeep/pull/2
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
