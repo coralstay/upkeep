@@ -1,10 +1,10 @@
 ---
 id: TASK-8
 title: 미병합 브랜치 task/TASK-1(운영 카드 TASK-1~6·runbooks·draft 18장) 병합과 카드 상태 정리
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-11-22T11:29:00Z'
-updated_date: '2026-11-22T11:30:00Z'
+updated_date: '2026-11-22T12:02:00Z'
 labels:
   - cleanup
   - backlog
