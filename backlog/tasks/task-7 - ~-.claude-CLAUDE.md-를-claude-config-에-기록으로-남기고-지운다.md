@@ -1,10 +1,10 @@
 ---
 id: TASK-7
 title: ~/.claude/CLAUDE.md 를 claude-config/ 에 기록으로 남기고 지운다
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-11-22T10:27:00Z'
-updated_date: '2026-11-22T11:02:00Z'
+updated_date: '2026-11-22T11:06:00Z'
 labels:
   - claude-config
   - record
