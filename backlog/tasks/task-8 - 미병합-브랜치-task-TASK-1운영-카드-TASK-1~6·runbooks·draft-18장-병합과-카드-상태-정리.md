@@ -9,6 +9,8 @@ labels:
   - cleanup
   - backlog
 dependencies: []
+documentation:
+  - /Users/flynn_macpro/.claude/plans/cleanup-unmerged-branches-cards.md
 ---
 
 ## Description
