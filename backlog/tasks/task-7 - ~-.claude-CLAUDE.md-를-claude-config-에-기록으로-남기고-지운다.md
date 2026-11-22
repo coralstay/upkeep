@@ -1,10 +1,10 @@
 ---
 id: TASK-7
 title: ~/.claude/CLAUDE.md 를 claude-config/ 에 기록으로 남기고 지운다
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-11-22T10:27:00Z'
-updated_date: '2026-11-22T11:07:00Z'
+updated_date: '2026-11-22T11:08:00Z'
 labels:
   - claude-config
   - record
@@ -82,6 +82,8 @@ upkeep 에 claude-config/ 를 만들어 원본 전문을 바이트 그대로(헤
 - 증거: TASK-7#1 — claude-config/CLAUDE.md-2026-11-21.md 는 ~/githubs-backup/2026-11-21-CLAUDE.md.bak 과 cmp 바이트 동일(73줄, 헤더 주석도 넣지 않음 — 계획보다 엄격하게, 출처는 README 에). claude-config/README.md 에 절별 상태(워크플로 블록 1~39 = agile-hooks TASK-76 으로 대체, 서브에이전트 41~52·다이어그램 54~73 = 기록만)와 다시 적용하는 법(sed -n '41,73p' …)
 - 증거: TASK-7#2 — 기록이 f64d4ae 로 커밋된 것을 git cat-file -e HEAD:… 로 확인한 뒤, git show HEAD:… 의 41~73행과 ~/.claude/CLAUDE.md(2390바이트)를 diff -q 로 대조해 동일 확인 → rm ~/.claude/CLAUDE.md → ls 'No such file or directory'
 - 증거: TASK-7#3 — README 구성 목록에 claude-config/ 한 줄(f64d4ae 에 함께 들어감: auto_stage 훅이 먼저 스테이징). source-header lint --strict rc=0, gitleaks(claude-config, 백업) no leaks, /Users/ 경로 0건
+
+- 테스트: tests/test_claude_config.py(11개). 순서 위반 기록 — 작업 뒤에 썼다. upkeep testFirst 가 Done 전에 표식을 요구해 알게 됐다(scripts/** 가 아닌 문서 작업이라 편집 게이트는 걸리지 않았다). 10 passed, PR 기록 테스트만 PR 생성 전이라 실패 → PR 번호 기록 후 통과 예정
 <!-- SECTION:NOTES:END -->
 
 ## Final Summary
