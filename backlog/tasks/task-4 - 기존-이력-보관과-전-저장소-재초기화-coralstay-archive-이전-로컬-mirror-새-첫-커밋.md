@@ -4,7 +4,7 @@ title: '기존 이력 보관과 전 저장소 재초기화: coralstay-archive �
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:02:00Z'
-updated_date: '2026-11-05T20:03:00Z'
+updated_date: '2026-11-22T12:03:00Z'
 labels:
   - archive
   - reinit
@@ -108,4 +108,6 @@ documentation:
 범위 정리(2026-11-06): AC #4의 18개 중 ebpf-wire-to-code-tracer는 Antigravity 작업 중이라 재초기화를 별도 draft(ebpf·handcrafted-python)로 넘김. 보관(AC #1·#2)은 18개 모두 완료.
 - 증거: TASK-4#D1 — '3단계 새 이력 미리보기' 절(~/githubs-backup/2026-11-01/reinit-preview/*.files·*.findings, gitleaks 결과)
 - 증거: TASK-4#D2 — '2단계 GitHub 보관'·'4·5단계' 절(`gh repo list coralstay-archive` 18 Archived, `gh api repos/coralstay/<n>/commits` 17곳 1개·Private)
+
+- 2026-11-22 TASK-8 분류: AC 5/5 끝남. DoD 수동 검증(미리보기·gitleaks·gh 목록 첨부)과 Manual-Verified 게이트(agile-hooks TASK-73) 대기라 상태 유지
 <!-- SECTION:NOTES:END -->

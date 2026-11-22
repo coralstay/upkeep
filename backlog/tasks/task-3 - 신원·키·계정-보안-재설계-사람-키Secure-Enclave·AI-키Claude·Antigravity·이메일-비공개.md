@@ -4,7 +4,7 @@ title: '신원·키·계정 보안 재설계: 사람 키(Secure Enclave)·AI 키
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:02:00Z'
-updated_date: '2026-11-05T22:05:00Z'
+updated_date: '2026-11-22T12:03:00Z'
 labels:
   - identity
   - security
@@ -36,7 +36,7 @@ documentation:
 - [x] #1 [수동 검증] GitHub 계정: gmail 인증·primary(비공개), "Keep my email addresses private"·"Block command line pushes that expose my email" 켜 둠, 2FA(passkey+TOTP), 불필요한 앱·토큰·키 폐기, vigilant mode 켜짐
 - [x] #2 [수동 검증] 새 신원으로 GitHub 인증이 된다(ssh -T 성공, 사람 인증 키는 Secure Enclave)
 - [x] #3 [수동 검증] 사람 서명 키가 Secure Enclave에 있고 서명마다 Touch ID를 요구하며(B1) GitHub 서명 키로 등록돼 커밋이 Verified로 보인다
-- [ ] #4 [수동 검증] Claude Code와 Antigravity가 각자 다른 AI 서명 키로 서명하고(B2) GitHub에서 Verified, git log --show-signature에서 principal이 구별된다
+- [x] #4 [수동 검증] Claude Code와 Antigravity가 각자 다른 AI 서명 키로 서명하고(B2) GitHub에서 Verified, git log --show-signature에서 principal이 구별된다
 - [x] #5 [수동 검증] AI 서명으로 만든 Plan-Approved 커밋은 훅이 거부한다(B3)
 - [x] #6 [수동 검증] git 전역 user.email·~/.mailmap이 coralstay <231006716+coralstay@users.noreply.github.com> 기준이고(B4), 옛 github_signature 키는 GitHub·로컬에서 폐기됐다
 - [x] #7 [수동 검증] AI 서명 키(Claude·Antigravity)를 Secretive Secure Enclave 키(Touch ID 없음)로 옮겨 키 파일을 복사·유출할 수 없게 하고, 옛 파일 키는 GitHub·로컬에서 폐기한다
@@ -134,4 +134,9 @@ GitHub 웹 설정·Touch ID·settings.json 수정은 유저만 할 수 있으므
 증거: TASK-3#3 (GitHub) — 2026-11-06 재초기화한 17개 저장소의 사람 서명 첫 커밋이 GitHub에서 verified=true/valid(예: coralstay/freeride 01ed502). AC #4(AI 키의 GitHub Verified)는 Claude 커밋이 처음 push될 때 확인
 
 - 증거(부분): TASK-3#4 — Claude Code 키: claude-code-agile-hooks 7f939e2(서명 G/ai-claude-code)를 push한 뒤 `gh api repos/coralstay/claude-code-agile-hooks/commits/7f939e2` → verified=true, reason=valid(2026-11-06). Antigravity 키의 GitHub Verified는 실제 agy 실행 확인 때 남은 몫
+
+## 2026-11-22 AC #4 증거 (upkeep TASK-8 정리 중 확인)
+- 증거: TASK-3#4 — Claude Code 커밋 coralstay/source-header 12479df: git log --show-signature 'Good "git" signature for ai-claude-code with ECDSA key SHA256:ve62tQ1O…', GitHub verification verified=true reason=valid
+- 증거: TASK-3#4 — Antigravity 커밋 coralstay/handcrafted-python 691f561: 'Good "git" signature for ai-antigravity with ECDSA key SHA256:s+pSYQHL…', GitHub verification verified=true reason=valid
+- 두 principal(ai-claude-code · ai-antigravity)이 구별된다. 상태는 Manual-Verified 게이트(agile-hooks TASK-73) 대기라 유지
 <!-- SECTION:NOTES:END -->

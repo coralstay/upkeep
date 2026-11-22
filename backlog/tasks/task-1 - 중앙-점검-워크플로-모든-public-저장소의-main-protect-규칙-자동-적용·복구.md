@@ -4,7 +4,7 @@ title: '중앙 점검 워크플로: 모든 public 저장소의 main-protect 규�
 status: To Do
 assignee: []
 created_date: '2026-11-05T20:01:00Z'
-updated_date: '2026-11-05T20:01:00Z'
+updated_date: '2026-11-22T12:03:00Z'
 labels:
   - governance
   - github
@@ -80,3 +80,9 @@ GitHub Actions의 schedule + workflow_dispatch로 조정(reconcile) 루프를 �
 3. README 절(동작, PAT 만드는 법, 수동 실행)
 4. PR로 coralstay/coralstay에 반영 → 유저가 GOVERNANCE_TOKEN 등록 → dry_run 수동 실행 → 실제 실행 실측
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+- 2026-11-22 TASK-8 분류: 보류. 유저가 2026-11-12 공개 때 비밀값 push 보호·스캔·main 보호를 일부러 켜지 않기로 했다('제품이 아니니 열어 둬도 된다'). 유저가 먼저 요청할 때 진행
+<!-- SECTION:NOTES:END -->
