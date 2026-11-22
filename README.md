@@ -11,6 +11,7 @@
   - `archive-transfer.sh`: 보관 조직(coralstay-archive)으로 이전 + Archived
   - `identity/`: 신원·키 적용 스크립트와 셸 설정 조각
 - `runbooks/`: 반복되는 운영 절차
+- `claude-config/`: Claude Code 사용자 설정(`~/.claude/CLAUDE.md` 등)에 있던 지시문의 기록. 지금은 적용되지 않는다
 - `local/`: 로컬 전용(커밋 안 함). `patterns.sh`(민감 패턴) 등
 
 ## 운영 카드 규칙
