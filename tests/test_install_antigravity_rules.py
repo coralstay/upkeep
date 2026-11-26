@@ -173,6 +173,17 @@ def test_readme_lists_the_source_and_the_script():
     assert "덮지 않" in readme
 
 
+def test_notes_carry_the_check_outputs_and_manual_evidence():
+    """TASK-9#D1 TASK-9#D2: the card notes hold the pytest and shellcheck
+    results, and the manual install check carries a `- 증거:` line."""
+    tasks = os.path.join(REPO, "backlog", "tasks")
+    name = next(n for n in os.listdir(tasks) if n.startswith("task-9 - "))
+    text = read(os.path.join(tasks, name))
+    assert "passed" in text
+    assert "shellcheck" in text
+    assert "- 증거: TASK-9#D2" in text
+
+
 # == Coverage ==
 
 
