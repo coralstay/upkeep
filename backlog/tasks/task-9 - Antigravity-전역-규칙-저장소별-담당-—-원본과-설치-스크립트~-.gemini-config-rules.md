@@ -4,7 +4,7 @@ title: 'Antigravity 전역 규칙: 저장소별 담당 — 원본과 설치 스�
 status: In Progress
 assignee: []
 created_date: '2026-11-26T08:24:00Z'
-updated_date: '2026-11-26T09:17:00Z'
+updated_date: '2026-11-26T09:31:00Z'
 labels:
   - agents
   - antigravity
@@ -52,7 +52,7 @@ Antigravity 쪽 강제 장치, 저장소별 AGENTS.md 수정(Antigravity 담당 
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 pytest·shellcheck 출력을 Notes 에 첨부
-- [ ] #2 [수동 검증] 유저가 설치 스크립트를 실행하고 Antigravity 새 세션에서 규칙을 받는지 확인
+- [x] #2 [수동 검증] 유저가 설치 스크립트를 실행하고 Antigravity 새 세션에서 규칙을 받는지 확인
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -81,4 +81,12 @@ Antigravity 쪽 강제 장치, 저장소별 AGENTS.md 수정(Antigravity 담당 
 구현(1597595): agents/antigravity-repo-ownership.md(trigger: always_on, 담당 표 없이 workspace owner 명령만), scripts/install-antigravity-rules.sh, README 구성 목록. 테스트 tests/test_install_antigravity_rules.py 11개 — 먼저 10 failed 확인(7910c63). 표본 저장소 이름 중 dev-toolchain 은 명령 이름과 겹쳐 source-header 로 바꿈.
 검증 2026-11-26: uvx pytest tests/ → 29 passed. shellcheck -s sh → 0 경고, dash -n → ok, source-header lint → exit 0.
 남은 것: DoD #2 [수동 검증] 유저가 scripts/install-antigravity-rules.sh 실행 → Antigravity 새 세션에서 규칙을 받는지 확인.
+
+- 증거: TASK-9#D2 — 2026-11-26 유저가 scripts/install-antigravity-rules.sh 실행 · Antigravity 새 세션에서 규칙 확인, Manual-Verified: TASK-9 서명(d286c2f, %G?=G). 재확인: cmp ~/.gemini/config/rules/coralstay-repo-ownership.md agents/antigravity-repo-ownership.md → 같음, rules 폴더에는 이 파일 하나, 스크립트 재실행 → '이미 같음' exit 0. owner 명령: upkeep→claude, freeride/handcrafted-python→antigravity, toy-project/react-next-…→claude-other, /tmp→unknown(exit 1).
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Antigravity 전역 모듈 규칙으로 저장소별 담당 규칙을 만들었다. 원본 agents/antigravity-repo-ownership.md(trigger: always_on)는 담당 표 없이 dev-toolchain workspace owner 명령을 가리키고, antigravity 가 아니면 읽기 · 보고만, unknown 이면 묻기, ai-antigravity 키 서명을 담는다. scripts/install-antigravity-rules.sh 는 ~/.gemini/config/rules/coralstay-repo-ownership.md 하나만 설치하고 다른 내용이면 덮지 않고 diff 후 exit 1, --force 로만 교체한다. 테스트 11개(가짜 HOME), 전체 29 passed, shellcheck · dash -n · lint 통과, 유저 설치 · Antigravity 세션 확인 · Manual-Verified 서명.
+<!-- SECTION:FINAL_SUMMARY:END -->
