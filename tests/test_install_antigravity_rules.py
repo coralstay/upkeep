@@ -19,7 +19,7 @@ MAX_RULE_BYTES = 24 * 1024
 REPO_NAMES = (
     "coralstay-software-factory",
     "claude-code-agile-hooks",
-    "dev-toolchain",
+    "source-header",
     "central-docs-collector",
     "omnivim",
     "handcrafted-python",

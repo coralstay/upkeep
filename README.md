@@ -10,7 +10,9 @@
   - `reinit-preview.sh`, `reinit.sh`: 저장소 재초기화 미리보기와 실행
   - `archive-transfer.sh`: 보관 조직(coralstay-archive)으로 이전 + Archived
   - `identity/`: 신원·키 적용 스크립트와 셸 설정 조각
+  - `install-antigravity-rules.sh`: `agents/`의 Antigravity 규칙을 `~/.gemini/config/rules/coralstay-repo-ownership.md`로 설치. 내용이 다르면 덮지 않고 차이만 보인다(`--force`로만 교체)
 - `runbooks/`: 반복되는 운영 절차
+- `agents/`: 에이전트 규칙 원본. `antigravity-repo-ownership.md`는 저장소별 담당 규칙이다(decision-25, 담당 표는 dev-toolchain `workspace/repos.tsv`)
 - `claude-config/`: Claude Code 사용자 설정(`~/.claude/CLAUDE.md` 등)에 있던 지시문의 기록. 지금은 적용되지 않는다
 - `local/`: 로컬 전용(커밋 안 함). `patterns.sh`(민감 패턴) 등
 
