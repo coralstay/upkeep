@@ -4,11 +4,16 @@ title: 'Antigravity 전역 규칙: 저장소별 담당 — 원본과 설치 스�
 status: To Do
 assignee: []
 created_date: '2026-11-26T08:24:00Z'
-updated_date: '2026-11-26T08:41:00Z'
+updated_date: '2026-11-26T08:43:00Z'
 labels:
   - agents
   - antigravity
 dependencies: []
+documentation:
+  - >-
+    /Users/flynn_macpro/githubs/dev-tools/dev-toolchain/backlog/decisions/decision-25
+    - 저장소를-에이전트별로-나눠-갖는다-담당은-workspace-repos.tsv-담당-열이-SSOT.md
+  - https://antigravity.google/docs/rules
 ---
 
 ## Description
