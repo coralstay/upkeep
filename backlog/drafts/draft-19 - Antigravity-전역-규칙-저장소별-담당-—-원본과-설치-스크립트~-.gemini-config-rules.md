@@ -4,7 +4,7 @@ title: 'Antigravity 전역 규칙: 저장소별 담당 — 원본과 설치 스�
 status: Draft
 assignee: []
 created_date: '2026-11-26T08:24:00Z'
-updated_date: '2026-11-26T08:25:00Z'
+updated_date: '2026-11-26T08:41:00Z'
 labels:
   - agents
   - antigravity
@@ -41,6 +41,7 @@ Antigravity 쪽 강제 장치, 저장소별 AGENTS.md 수정(Antigravity 담당 
 - [ ] #1 agents/antigravity-repo-ownership.md 가 trigger: always_on 프론트매터와 담당 규칙(workspace owner 로 확인, antigravity 가 아니면 편집·커밋하지 않고 읽기·보고만, unknown 이면 유저에게 묻기, 자기 키 ai-antigravity 서명)을 담고 담당 표를 복사하지 않는다(B1)
 - [ ] #2 scripts/install-antigravity-rules.sh 가 ~/.gemini/config/rules/coralstay-repo-ownership.md 를 만든다. 같으면 할 일 없음, 다르면 덮지 않고 diff 를 보여 주며 1로 끝나고 --force 로만 교체한다. 다른 전역 규칙 파일은 건드리지 않는다(B2·B3)
 - [ ] #3 tests 가 가짜 HOME 에서 새로 설치·같음·다름·--force·다른 파일 불변을 검사하고 <ID>#n·#Bk 표식이 있다
+- [ ] #4 README 구성 목록에 agents/ 원본과 install-antigravity-rules.sh(유저가 실행, 덮지 않음)가 있다
 <!-- AC:END -->
 
 ## Definition of Done
