@@ -1,10 +1,10 @@
 ---
 id: TASK-9
 title: 'Antigravity 전역 규칙: 저장소별 담당 — 원본과 설치 스크립트(~/.gemini/config/rules/)'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-11-26T08:24:00Z'
-updated_date: '2026-11-26T09:31:00Z'
+updated_date: '2026-11-26T09:32:00Z'
 labels:
   - agents
   - antigravity
